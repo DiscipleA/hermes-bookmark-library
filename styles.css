@@ -1,0 +1,36 @@
+/* Operate surface: clear forms, restrained olive accent, no remote assets. */
+:root { color-scheme: light; --paper: #f5f3ec; --panel: #fffef9; --ink: #24271f; --muted: #565b50; --line: #c8cabc; --accent: #3e532c; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 "Segoe UI", Arial, sans-serif; }
+main { max-width: 850px; margin: 0 auto; padding: 44px 24px; }
+header { margin-bottom: 30px; }
+.eyebrow { color: var(--accent); font: 600 12px/1.4 Consolas, monospace; letter-spacing: .1em; }
+h1 { margin: 8px 0; font: 600 clamp(30px, 5vw, 44px)/1.15 Georgia, serif; }
+h2 { font-size: 20px; margin: 0 0 18px; }
+p { margin: 8px 0; }
+header > p:last-child, footer, label span, #count { color: var(--muted); }
+section { border-top: 1px solid var(--line); padding: 24px 0; }
+form { display: grid; grid-template-columns: 170px minmax(0, 1fr); align-items: center; gap: 14px 20px; }
+label { font-weight: 600; }
+label span { font-size: 13px; font-weight: 400; }
+input, button { font: inherit; border: 1px solid var(--line); border-radius: 5px; min-height: 44px; }
+input { width: 100%; padding: 10px 12px; background: var(--panel); color: var(--ink); }
+input::placeholder { color: #676d60; }
+button { padding: 8px 16px; cursor: pointer; background: var(--panel); color: var(--ink); }
+button:hover { border-color: var(--accent); background: #e9eddf; }
+button.primary { grid-column: 2; justify-self: start; background: var(--accent); color: white; border-color: var(--accent); }
+button.primary:hover { background: #2c3e1c; }
+:focus-visible { outline: 3px solid #7d963e; outline-offset: 3px; }
+#message { min-height: 25px; margin-top: 16px; }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+#search { margin: 8px 0 16px; }
+#empty { padding: 20px 0; color: var(--muted); }
+ul { list-style: none; margin: 0; padding: 0; }
+li { border-bottom: 1px solid var(--line); padding: 20px 0; }
+li > a { font-size: 20px; font-weight: 600; color: var(--accent); overflow-wrap: anywhere; }
+li > p { color: var(--muted); overflow-wrap: anywhere; font-size: 14px; margin-bottom: 16px; }
+li label { display: block; font-size: 13px; }
+li input { display: block; margin: 6px 0 12px; }
+li button { margin-right: 8px; }
+footer { border-top: 1px solid var(--line); padding-top: 20px; font-size: 13px; }
+@media (max-width: 560px) { main { padding: 24px 18px; } form { grid-template-columns: 1fr; gap: 7px; } form input { margin-bottom: 10px; } button.primary { grid-column: 1; } .section-heading { display: block; } }

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Hermes Bookmark Library</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./src/app.mjs"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">HERMES / AUTOMATION LAB</p>
+      <h1>Bookmark Library</h1>
+      <p>A small place for links worth keeping. This session only: refresh clears your library.</p>
+    </header>
+    <section aria-labelledby="add-heading">
+      <h2 id="add-heading">Save a link</h2>
+      <form id="bookmark-form">
+        <label for="title">Title</label>
+        <input id="title" name="title" required placeholder="A useful resource" autocomplete="off">
+        <label for="url">URL</label>
+        <input id="url" name="url" type="url" required placeholder="https://example.com" autocomplete="off" spellcheck="false">
+        <label for="tags">Tags <span>(comma-separated, optional)</span></label>
+        <input id="tags" name="tags" placeholder="reading, reference" autocomplete="off">
+        <button type="submit" class="primary">Save bookmark</button>
+      </form>
+      <p id="message" role="status" aria-live="polite"></p>
+    </section>
+    <section aria-labelledby="library-heading">
+      <div class="section-heading"><h2 id="library-heading">Your library</h2><p id="count" aria-live="polite"></p></div>
+      <label for="search">Search title or tags <span>(currently case-sensitive)</span></label>
+      <input id="search" type="search" placeholder="Filter your saved links" autocomplete="off">
+      <p id="empty">Your library is empty. Save your first link above.</p>
+      <ul id="bookmarks" aria-label="Saved bookmarks"></ul>
+    </section>
+    <footer>AI-assisted teaching demo. Intentional bug: duplicate URLs are accepted. No accounts, persistence, analytics, or background external requests. Opening a saved link navigates to that site.</footer>
+    <noscript>This demo needs JavaScript enabled.</noscript>
+  </main>
+</body>
+</html>

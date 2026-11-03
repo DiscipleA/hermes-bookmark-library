@@ -1,0 +1,9 @@
+{
+  "name": "hermes-bookmark-library",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local, dependency-free bookmark library for AI-assisted PR demonstrations",
+  "scripts": { "test": "node --test tests/*.test.mjs", "start": "node server.mjs" },
+  "engines": { "node": ">=22" }
+}

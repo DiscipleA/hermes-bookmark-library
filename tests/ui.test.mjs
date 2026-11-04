@@ -46,6 +46,17 @@ test('UI rejects unsafe URLs, shows an error, and keeps the form input', () => {
   assert.equal(ids.title.value, 'Unsafe');
 });
 
+test('UI rejects duplicate URLs and keeps all entered values', () => {
+  const ids = setup();
+  add(ids, 'Original', 'https://example.com', 'original');
+  add(ids, 'Duplicate', ' HTTPS://EXAMPLE.COM:443/ ', 'duplicate');
+  assert.equal(ids.bookmarks.children.length, 1);
+  assert.match(ids.message.textContent, /already.*saved/i);
+  assert.equal(ids.title.value, 'Duplicate');
+  assert.equal(ids.url.value, ' HTTPS://EXAMPLE.COM:443/ ');
+  assert.equal(ids.tags.value, 'duplicate');
+});
+
 test('UI searches title and tags, edits tags, and removes a bookmark', () => {
   const ids = setup(); add(ids);
   ids.search.value = 'Missing'; ids.search.fire('input');

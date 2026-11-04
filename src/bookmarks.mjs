@@ -22,7 +22,9 @@ export function addBookmark(bookmarks, { title, url, tags = '' }) {
   const normalized = normalizeUrl(url);
   let number = 1;
   while (bookmarks.some(bookmark => bookmark.id === `bookmark-${number}`)) number += 1;
-  // INTENTIONAL DEMO BUG: equivalent normalized URLs are not rejected here.
+  if (bookmarks.some(bookmark => bookmark.url === normalized)) {
+    throw new Error('This bookmark URL is already saved.');
+  }
   return [...bookmarks, { id: `bookmark-${number}`, title: title.trim(), url: normalized, tags: parseTags(tags) }];
 }
 

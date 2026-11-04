@@ -1,4 +1,3 @@
-// Copy into <repo>/tests/regression.test.mjs before running.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { addBookmark } from '../src/bookmarks.mjs';
@@ -17,6 +16,15 @@ for (const [original, duplicate] of [
     assert.equal(bookmarks.length, 1);
   });
 }
+
+test('rejecting a duplicate does not mutate the existing collection', () => {
+  const bookmarks = addBookmark([], { title: 'Original', url: 'https://example.com' });
+  const snapshot = structuredClone(bookmarks);
+  assert.throws(() => addBookmark(bookmarks, {
+    title: 'Again', url: ' HTTPS://EXAMPLE.COM:443/ ', tags: 'new, tag',
+  }), /already.*saved/i);
+  assert.deepEqual(bookmarks, snapshot);
+});
 
 test('keeps distinct paths, path case, query strings, schemes, and non-default ports', () => {
   const urls = [
